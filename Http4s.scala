@@ -1,3 +1,7 @@
+//> using toolkit typelevel:0.1.21
+//> using dependency org.http4s::http4s-dsl:0.23.25
+//> using dependency org.http4s::http4s-ember-server:0.23.25
+
 import cats.effect._
 import cats.syntax.all._
 import org.http4s._, org.http4s.dsl.io._, org.http4s.implicits._

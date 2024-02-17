@@ -1,12 +1,12 @@
 # A quick guide to Functional Scala and Nix
 
-Commencing the journey into Functional Programming in Scala has become notably simplified with the integration of Nix and Scala-cli-toolkit. This blog post is crafted to provide minimal guidance, facilitating a swift transition from novice to proficient, and ultimately, production-ready with Scala
+Commencing the journey into Functional Programming in Scala has become notably simplified with the integration of Nix and Scala-cli-toolkit. This blog post is crafted to provide guidance and most of the commands that facilitate an easy transition from zero to proficient with Scala.
 
 ## Introduction to Nix and Scala-cli
 
 ### Nix Package Manager
 
-Nix has emerged as a versatile package manager (it has been 20 years in the making though) renowned for its innovative approach to dependency management and reproducible builds. Its declarative language and immutable infrastructure model offer developers unparalleled control over their development environments. As the demand for robust and reliable software delivery pipelines intensifies, Nix stands out as a game-changer, empowering teams to build, deploy, and manage software with efficiency and reliability.
+Nix has emerged as a versatile package manager (it has been 20 years in the making) renowned for its innovative approach to dependency management and reproducible builds. Its declarative language and immutable infrastructure model offer developers control over their development environments. Nix stands out as a tool to empower teams to build, deploy, and manage software with efficiency and reliability.
 
 ### Scala-cli Introduction
 
@@ -29,7 +29,7 @@ nix (Nix) 2.19.3
 
 ## typelevel nix nix develop
 
-With just one command (flakes need to be enabled, but just follow through the suggested experimental flags when there is an error)
+With just one command (flakes need to be enabled, follow through the suggested experimental flags when/if an error is raised)
 `nix develop github:typelevel/typelevel-nix#application`
 
 This will provide us with a
@@ -61,13 +61,11 @@ Up to this point, we have a `shell` with all the tooling necessary to be product
 A toolkit of great libraries to start building Typelevel apps on JVM, Node.js, and Native!
 Overview
 Typelevel toolkit is a meta library that currently includes these libraries:
-Cats and Cats Effect
-fs2 and fs2 I/O
-fs2 data CSV and its generic module
-Http4s Ember client
-Circe and http4s integration
-Decline Effect
-Munit Cats Effect
+[Cats](https://github.com/typelevel/cats) and [Cats Effect](https://github.com/typelevel/cats-effect)
+[fs2](https://github.com/typelevel/fs2) and [fs2 I/O](https://fs2.io/#/io)
+[fs2 data CSV and its generic module](https://fs2-data.gnieh.org/documentation/csv/)
+[Http4s Ember client](https://http4s.org/v0.23/docs/client.html)
+and several more
 
 ## Scripting  3 jobs in a functional way
 
@@ -117,6 +115,13 @@ object Http4sScript extends IOApp {
 ```
 
 ```bash
+❯ scala-cli run Http4s.scala
+Compiling project (Scala 3.3.1, JVM (17))
+Compiled project (Scala 3.3.1, JVM (17))
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+# Separate shell
 ❯ http get localhost:8080/hello/xebia
 HTTP/1.1 200 OK
 Connection: keep-alive
@@ -150,30 +155,10 @@ Compiled project (Scala 3.3.1, JVM (17))
 BEING RUN!!
 ```
 
+## Better shell scripting
 
-From here we will use the typelevel-nix, which will give us a usable development environment to play around with Scala and finish it all with `typelevel:toolkit` to start using functional libraries out of the box. So essentially we just need one install and we get a ton of tooling for free.
-Getting Started Tutorials:
-Create tutorials on how to use Nix to manage packages, environments, and dependencies for Scala projects.
-Walkthrough the basics of setting up a Scala project using Scala-cli and managing its dependencies with Nix.
-Advanced Usage and Tips:
-Dive deeper into advanced features of Nix, such as overlays, custom package definitions, and environment management.
-Explore advanced usage scenarios for Scala-cli, such as building and packaging Scala applications, managing plugins, and integrating with other build tools.
-Best Practices and Optimization:
-Share best practices for optimizing Nix configurations and workflows to improve build times and resource usage.
-Provide tips and tricks for optimizing Scala-cli configurations and project setups for performance and maintainability.
-Integration Guides:
-Write guides on integrating Nix with other development tools and workflows commonly used in Scala development, such as sbt, Maven, and IDEs.
-Explore how to leverage Nix to create reproducible development environments and CI/CD pipelines for Scala projects.
-Case Studies and Use Cases:
-Showcase real-world use cases and case studies of companies or projects using Nix and Scala-cli in their development workflows.
-Interview developers or teams who have adopted these tools and share their experiences, challenges, and successes.
-Community Engagement:
-Encourage community engagement by inviting readers to share their experiences, tips, and contributions related to Nix and Scala-cli.
-Host Q&A sessions, forums, or live streams to discuss topics related to Nix, Scala-cli, and broader software development practices.
-Updates and News:
-Stay up-to-date with the latest developments, releases, and news related to Nix and Scala-cli, and share updates with your readers.
-Provide analysis and insights into how these updates may impact developers and their workflows.
-Collaboration and Contributions:
-Invite guest bloggers, experts, and contributors from the Nix and Scala communities to share their knowledge and insights on your blog.
-Contribute back to the Nix and Scala-cli ecosystems by sharing tutorials, documentation improvements, or bug fixes upstream.
-Remember to keep your content clear, concise, and beginner-friendly while also catering to more advanced users. Additionally, engage with your audience through comments, social media, and newsletters to build a thriving community around your tech blog.
+[Scala-cli is great for shell script](https://xebia.com/blog/better-shell-scripting-with-scala-cli/)
+
+## Summary
+
+Hopefully this 

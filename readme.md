@@ -32,7 +32,7 @@ nix (Nix) 2.19.3
 With just one command (flakes need to be enabled, follow through the suggested experimental flags when/if an error is raised)
 `nix develop github:typelevel/typelevel-nix#application`
 
-This will provide us with a
+This will provide us with a complete development Scala environment, with several tools (not exhaustive): Coursier, JVM, node, Gitter8, scala-fmt, scala-fix, scala-cli.
 
 ```bash
 $ nix develop github:typelevel/typelevel-nix#application
@@ -131,6 +131,7 @@ Date: Sat, 17 Feb 2024 02:38:06 GMT
 
 Hello, xebia.
 ```
+
 ## Basic f2s streams
 
 ```bash
@@ -157,8 +158,8 @@ BEING RUN!!
 
 ## Better shell scripting
 
-[Scala-cli is great for shell script](https://xebia.com/blog/better-shell-scripting-with-scala-cli/)
+The recommended reading [Scala-cli is great for shell script](https://xebia.com/blog/better-shell-scripting-with-scala-cli/)
 
 ## Summary
 
-Hopefully this 
+This blog primarily focuses on providing insights into setting up Scala and simplifying the process of creating practical applications. While we have covered a range of tools here, it is important to note that there is a wealth of information to delve into regarding each one. We aspire here to serve as a valuable resource for future reference, igniting inspiration and encouraging further exploration and creation within the Scala ecosystem.

@@ -114,8 +114,42 @@ object Http4sScript extends IOApp {
       .use(_ => IO.never)
       .as(ExitCode.Success)
 }
-
 ```
+
+```bash
+❯ http get localhost:8080/hello/xebia
+HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Length: 13
+Content-Type: text/plain; charset=UTF-8
+Date: Sat, 17 Feb 2024 02:38:06 GMT
+
+Hello, xebia.
+```
+## Basic f2s streams
+
+```bash
+$> touch Fs2.scala
+```
+
+```scala
+//> using toolkit typelevel:0.1.21
+import cats.effect.*
+import fs2.Stream
+
+object StreamsTest extends IOApp.Simple {
+  def run: IO[Unit] =
+    Stream.eval(IO { println("BEING RUN!!") }).compile.drain
+}
+```
+
+```bash
+❯ scala-cli run Fs2.scala
+Compiling project (Scala 3.3.1, JVM (17))
+Compiled project (Scala 3.3.1, JVM (17))
+BEING RUN!!
+```
+
 
 From here we will use the typelevel-nix, which will give us a usable development environment to play around with Scala and finish it all with `typelevel:toolkit` to start using functional libraries out of the box. So essentially we just need one install and we get a ton of tooling for free.
 Getting Started Tutorials:

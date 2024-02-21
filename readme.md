@@ -142,10 +142,21 @@ $> touch Fs2.scala
 //> using toolkit typelevel:0.1.21
 import cats.effect.*
 import fs2.Stream
+import scala.util.Try
 
 object StreamsTest extends IOApp.Simple {
-  def run: IO[Unit] =
-    Stream.eval(IO { println("BEING RUN!!") }).compile.drain
+  def run: IO[Unit] = {
+    val stream = Stream.range[IO, Int](1, 10)
+    val transformedStream = stream.map(i => Try(i * 2).toEither)
+
+    transformedStream
+      .evalMap {
+        case Right(value) => IO(println(s"Value: $value"))
+        case Left(e)      => IO(println(s"Error: ${e.getMessage}"))
+      }
+      .compile
+      .drain
+  }
 }
 ```
 
@@ -153,7 +164,14 @@ object StreamsTest extends IOApp.Simple {
 ❯ scala-cli run Fs2.scala
 Compiling project (Scala 3.3.1, JVM (17))
 Compiled project (Scala 3.3.1, JVM (17))
-BEING RUN!!
+Value: 2
+Value: 4
+Value: 6
+Value: 8
+Value: 10
+Value: 12
+Value: 14
+Value: 16
 ```
 
 ## Also run tests

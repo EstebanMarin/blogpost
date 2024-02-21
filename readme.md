@@ -156,9 +156,43 @@ Compiled project (Scala 3.3.1, JVM (17))
 BEING RUN!!
 ```
 
+## Also run tests
+
+```scala
+//> using scala 3.3.1
+//> using dep "org.scalamock::scalamock:6.0.0-M1"
+//> using dep "org.scalatest::scalatest:3.2.18"
+
+import org.scalamock.scalatest.MockFactory
+import org.scalatest.funsuite.AnyFunSuite
+
+class Example:
+  def method(input: String): String = "placeholder"
+
+class MockTest extends AnyFunSuite with MockFactory:
+  test("Mocking Example.method") {
+    val example = mock[Example]
+    (example.method _).expects("input").returning("output")
+    assert(example.method("input") == "output")
+  }
+```
+
+```bash
+❯ scala-cli test MockTest.scala
+Compiling project (Scala 3.3.1, JVM (17))
+Compiled project (Scala 3.3.1, JVM (17))
+MockTest:
+- Mocking Example.method
+Run completed in 66 milliseconds.
+Total number of tests run: 1
+Suites: completed 1, aborted 0
+Tests: succeeded 1, failed 0, canceled 0, ignored 0, pending 0
+All tests passed.
+```
+
 ## Better shell scripting
 
-The recommended reading [Scala-cli is great for shell script](https://xebia.com/blog/better-shell-scripting-with-scala-cli/)
+Scala, is now a scripting language we recommend reading [Scala-cli is great for shell script](https://xebia.com/blog/better-shell-scripting-with-scala-cli/)
 
 ## Summary
 

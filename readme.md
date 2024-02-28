@@ -134,47 +134,7 @@ Hello, xebia.
 
 ## Basic f2s streams
 
-```bash
-$> touch Fs2.scala
-```
-
-```scala
-//> using toolkit typelevel:0.1.21
-import cats.effect.*
-import fs2.Stream
-import scala.util.Try
-
-object StreamsTest extends IOApp.Simple {
-  def run: IO[Unit] = {
-    val stream = Stream.range[IO, Int](1, 10)
-    val transformedStream = stream.map(i => Try(i * 2).toEither)
-
-    transformedStream
-      .evalMap {
-        case Right(value) => IO(println(s"Value: $value"))
-        case Left(e)      => IO(println(s"Error: ${e.getMessage}"))
-      }
-      .compile
-      .drain
-  }
-}
-```
-
-```bash
-❯ scala-cli run Fs2.scala
-Compiling project (Scala 3.3.1, JVM (17))
-Compiled project (Scala 3.3.1, JVM (17))
-Value: 2
-Value: 4
-Value: 6
-Value: 8
-Value: 10
-Value: 12
-Value: 14
-Value: 16
-```
-
-## Also run tests
+Also, run tests
 
 ```scala
 //> using scala 3.3.1
@@ -210,7 +170,7 @@ All tests passed.
 
 ## Better shell scripting
 
-Scala, is now a scripting language we recommend reading [Scala-cli is great for shell script](https://xebia.com/blog/better-shell-scripting-with-scala-cli/)
+Scala is now a scripting language we recommend reading [Scala-cli is great for shell script](https://xebia.com/blog/better-shell-scripting-with-scala-cli/)
 
 ## Summary
 

@@ -33,7 +33,7 @@ For the final step we will enable [nix Flakes](https://nixos.wiki/wiki/Flakes), 
 nix  --experimental-features 'nix-command flakes'
 ```
 
-## typelevel nix nix develop
+## typelevel nix develop
 
 With just one command (flakes need to be enabled, follow through the suggested experimental flags when/if an error is raised)
 `nix develop github:typelevel/typelevel-nix#application`
@@ -60,9 +60,50 @@ sbt script version: 1.9.8
 $ exit
 ```
 
+After exiting the shell you will notice the underlying system has not changed and `Scala` is no longer available.
+
 ## Scala-CLI
 
-Up to this point, we have a `shell` with all the tooling necessary to be productive in Scala. Of those tools, we are going to explore `scala-cli` and how to be functional easily with `typelevel:toolkit`.
+Up to this point, we have a `shell` with all the tooling necessary to be productive in Scala. Of those tools, we are going to explore `scala-cli` and how to be functional easily with `typelevel:toolkit`. First let's explore its main features
+
+### Handle Scala versions, dependencies, and JVM with ease
+
+#### Scala versions
+
+```bash
+❯ scala-cli run HelloWorld.scala
+Compiling project (Scala 3.3.1, JVM (17))
+Compiled project (Scala 3.3.1, JVM (17))
+Hello, World!
+
+❯ scala-cli --scala 2.13.6  HelloWorld.scala
+Compiling project (Scala 2.13.6, JVM (17))
+Compiled project (Scala 2.13.6, JVM (17))
+Hello, World!
+```
+
+#### JVM versions
+
+```bash
+❯ scala-cli --jvm 8  HelloWorld.scala
+
+Downloading JVM zulu:8
+Compiling project (Scala 3.3.1, JVM (8))
+Compiled project (Scala 3.3.1, JVM (8))
+```
+
+#### Add dependencies to your REPL
+
+```bash
+❯ scala-cli --dep org.scalatest::scalatest:3.2.18
+Welcome to Scala 3.3.1 (17.0.5, Java Java HotSpot(TM) 64-Bit Server VM).
+Type in expressions for evaluation. Or try :help.
+scala> // scalatest available
+```
+
+There are much more feature worth exploring, visit the [Scala-cli documentation](https://scala-cli.virtuslab.org/)
+
+### Typelevel toolkit
 
 A toolkit of great libraries to start building Typelevel apps on JVM, Node.js, and Native!
 Overview

@@ -27,9 +27,10 @@ check the installation
 nix (Nix) 2.19.3
 ```
 
-For the final step we will enable [nix Flakes](https://nixos.wiki/wiki/Flakes), the easiest less permanent way to enable it is by adding the flag to the `nix` command
+For the final step we will enable [nix Flakes](https://nixos.wiki/wiki/Flakes), the easiest less permanent way to enable it is by adding the flag to the `nix` command./nix
 
 ```bash
+nix  --experimental-features 'nix-command flakes'
 ```
 
 ## typelevel nix nix develop
